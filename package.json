@@ -1,0 +1,30 @@
+{
+  "name": "all_the_news",
+  "version": "1.0.0",
+  "description": "New Search engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hdobenshain/All_the_news.git"
+  },
+  "keywords": [
+    "strange",
+    "odd",
+    "differnt",
+    "weird"
+  ],
+  "author": "Dwayne Obenshain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hdobenshain/All_the_news/issues"
+  },
+  "homepage": "https://github.com/hdobenshain/All_the_news#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.83.0"
+  }
+}
