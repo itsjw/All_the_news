@@ -16,9 +16,12 @@ db.on("error", function(error) {
   console.log("Database Error:", error);
 });
 
+
+app.use(express.static("./public"));
+
 // Main route (simple Hello World Message)
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, './public/index.html'));
+   res.sendFile(path.join(__dirname, "./public/index.html"));
   
 });
 
@@ -34,10 +37,25 @@ app.get("/all", function(req, res) {
     // If there are no errors, send the data to the browser as json
     else {
       res.json(found);
+
     }
   });
 });
 
+app.get("/name", function(req, res) {
+  // Query: In our database, go to the animals collection, then "find" everything,
+  // but this time, sort it by name (1 means ascending order)
+  db.scrapeData.find().sort({ name: 1 }, function(error, found) {
+    // Log any errors if the server encounters one
+    if (error) {
+      console.log(error);
+    }
+    // Otherwise, send the result of this query to the browser
+    else {
+      res.json(found);
+    }
+  });
+});
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function(req, res) {
 
@@ -50,13 +68,16 @@ app.get("/scrape", function(req, res) {
       // Save the text and href of each link enclosed in the current element
       var title = $(element).children("a").text();
       var link = $(element).children("a").attr("href");
-console.log(title);
+      var image = $(element).children("a").children("img").attr("src");
+console.log(image);
+// console.log(title);
       // If this found element had both a title and a link
       if (title && link) {
         // Insert the data in the scrapedData db
         db.scrapeData.insert({
           title: title,
-          link: link
+          link: link,
+          image: image
         },
         function(err, inserted) {
           if (err) {
@@ -78,6 +99,6 @@ console.log(title);
 
 
 // Listen on port 3000
-app.listen(3000, function() {
-  console.log("App running on port 3000!");
+app.listen(8081, function() {
+  console.log("App running on port 8081!");
 });
