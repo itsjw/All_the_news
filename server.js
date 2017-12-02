@@ -9,7 +9,7 @@ var path = require('path');
 // Database configuration
 var databaseUrl = "scraper";
 var collections = ["scrapeData"];
-var db = process.env.MONGODB_URI || 'mongodb://<root>:<root>@ds259855.mlab.com:59855/oddnews'
+var db = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
