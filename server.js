@@ -98,7 +98,7 @@ console.log(image);
   res.send("Scrape Complete");
 });
 var PORT = process.env.PORT || 3000;
-var db = process.env.MONGODB_URI || 'mongodb://<root>:<root>@ds259855.mlab.com:59855/oddnews'
+// var db = process.env.MONGODB_URI || 'mongodb://<root>:<root>@ds259855.mlab.com:59855/oddnews'
 
 // Listen on port 3000
 app.listen(PORT, function() {
