@@ -70,15 +70,14 @@ app.get("/scrape", function(req, res) {
       var title = $(element).children("a").text();
       var link = $(element).children("a").attr("href");
       // var image = $(element).children("a").children("img").attr("src");
-console.log(image);
+// console.log(image);
 // console.log(title);
       // If this found element had both a title and a link
       if (title && link) {
         // Insert the data in the scrapedData db
         db.scrapeData.insert({
           title: title,
-          link: link,
-          image: image
+          link: link
         },
         function(err, inserted) {
           if (err) {
