@@ -12,7 +12,7 @@ var collections = ["scrapeData"];
 var db = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
 
 // Hook mongojs configuration to the db variable
-// var db = mongojs(databaseUrl, collections);
+ var db = mongojs(databaseUrl, collections);
 db.on("error", function(error) {
   console.log("Database Error:", error);
 });
