@@ -12,7 +12,7 @@ var collections = ["scrapeData"];
 var db = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
 
 // Hook mongojs configuration to the db variable
-var db = mongojs(databaseUrl, collections);
+// var db = mongojs(databaseUrl, collections);
 db.on("error", function(error) {
   console.log("Database Error:", error);
 });
@@ -69,7 +69,7 @@ app.get("/scrape", function(req, res) {
       // Save the text and href of each link enclosed in the current element
       var title = $(element).children("a").text();
       var link = $(element).children("a").attr("href");
-      var image = $(element).children("a").children("img").attr("src");
+      // var image = $(element).children("a").children("img").attr("src");
 console.log(image);
 // console.log(title);
       // If this found element had both a title and a link

@@ -9,7 +9,7 @@ function displayResults(scrapeData) {
     // Append each of the animal's properties to the table
     $("tbody").append("<tr>"+ 
                           "<td>" + "<a href = "+ 'http://www.thesmokinggun.com' + scrape.link + "> " + scrape.title + "</a></td>" +
-                         "<td>" + scrape.image  + "</td>" +
+                         // "<td>" + scrape.image  + "</td>" +
                           "</tr>");
   });
 };
