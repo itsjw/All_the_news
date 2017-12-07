@@ -11,6 +11,16 @@ var databaseUrl = "oddnews";
 var collections = ["scrapeData"];
 var db = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
 
+
+//  mongoose.Promise = Promise;
+// //  mongoose.connect('mongodb://localhost/news-goose', {
+// //      useMongoClient: true
+// //  });
+
+//  mongoose.connect(db, {
+//      useMongoClient: true
+//  });
+
 // Hook mongojs configuration to the db variable
  var db = mongojs(databaseUrl, collections);
 db.on("error", function(error) {
