@@ -6,7 +6,7 @@ var cheerio = require('cheerio');
 var app     = express();
 var path = require('path');
 var mongoose = require('mongoose');
-var model = require ('model_js.js');
+var model = require ('Article');
 
 
 // Database configuration
