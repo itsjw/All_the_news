@@ -5,27 +5,31 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
 var path = require('path');
+var mongoose = require('mongoose');
+var model = require ('model_js.js');
+
 
 // Database configuration
 var databaseUrl = "oddnews";
 var collections = ["scrapeData"];
 var db = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
 
-
-//  mongoose.Promise = Promise;
-// //  mongoose.connect('mongodb://localhost/news-goose', {
-// //      useMongoClient: true
-// //  });
-
-//  mongoose.connect(db, {
-//      useMongoClient: true
-//  });
-
 // Hook mongojs configuration to the db variable
  var db = mongojs(databaseUrl, collections);
 db.on("error", function(error) {
   console.log("Database Error:", error);
 });
+
+var db = process.env.MONGO_URI || "mongodb://root:root@ds113606.mlab.com:13606/goodmongo100";
+
+ mongoose.Promise = Promise;
+//  mongoose.connect('mongodb://localhost/news-goose', {
+//      useMongoClient: true
+//  });
+
+ mongoose.connect(db, {
+     useMongoClient: true
+ });
 
 
 app.use(express.static("./public"));
