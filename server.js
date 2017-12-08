@@ -44,7 +44,7 @@ app.get("/", function(req, res) {
 app.get("/all", function(req, res) {
 
   // Find all results from the scrapedData collection in the db
-  db.scrapeData.find({}, function(error, found) {
+  db.scrapeData.insert({}, function(error, found) {
     // Throw any errors to the console
     if (error) {
       console.log(error);
