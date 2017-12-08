@@ -7,7 +7,7 @@ var app     = express();
 var path = require('path');
 var mongoose = require('mongoose');
 var Exa = require("./model_js.js");
-
+var PORT = process.env.PORT || 3000;
 
 // Database configuration
 var databaseUrl = "oddnews";
@@ -108,7 +108,7 @@ app.get("/scrape", function(req, res) {
   // Send a "Scrape Complete" message to the browser
   res.send("Scrape Complete");
 });
-var PORT = process.env.PORT || 3000;
+
 // var db = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
 
 // Listen on port 3000
