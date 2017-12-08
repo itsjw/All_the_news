@@ -14,7 +14,7 @@ var databaseUrl = "oddnews";
 var collections = ["scrapeData"];
 var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
 
-mongoose.connect(MONGODB_URI);
+
 
 // Hook mongojs configuration to the db variable
  var db = mongojs(databaseUrl, collections);
