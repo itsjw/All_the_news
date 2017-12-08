@@ -12,7 +12,9 @@ var Exa = require("./model_js.js");
 // Database configuration
 var databaseUrl = "oddnews";
 var collections = ["scrapeData"];
-var db = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
+
+mongoose.connect(MONGODB_URI);
 
 // Hook mongojs configuration to the db variable
  var db = mongojs(databaseUrl, collections);
@@ -20,15 +22,11 @@ db.on("error", function(error) {
   console.log("Database Error:", error);
 });
 
-var db = process.env.MONGO_URI || "mongodb://root:root@ds113606.mlab.com:13606/goodmongo100";
 
  mongoose.Promise = Promise;
-//  mongoose.connect('mongodb://localhost/news-goose', {
-//      useMongoClient: true
-//  });
 
- mongoose.connect(db, {
-     useMongoClient: true
+ mongoose.connect(MONGODB_URI, {
+     useMongoClient: true, 
  });
 
 
