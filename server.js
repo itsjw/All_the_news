@@ -87,7 +87,7 @@ app.get("/scrape", function(req, res) {
       // If this found element had both a title and a link
       if (title && link) {
         // Insert the data in the scrapedData db
-        db.scrapeData.insert({
+        db.save.insert({
           title: title,
           link: link
         },
