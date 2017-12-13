@@ -11,7 +11,7 @@ var PORT = process.env.PORT || 3000;
 
 // Database configuration
 var databaseUrl = "oddnews";
-var collections = ["scrapeData"];
+var collections = ["Article"];
 var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
 
 
@@ -42,7 +42,7 @@ app.get("/", function(req, res) {
 app.get("/all", function(req, res) {
 
   // Find all results from the scrapedData collection in the db
-  db.scrapeData.find({}, function(error, found) {
+  db.Article.find({}, function(error, found) {
     // Throw any errors to the console
     if (error) {
       console.log(error);
@@ -58,7 +58,7 @@ app.get("/all", function(req, res) {
 app.get("/name", function(req, res) {
   // Query: In our database, go to the animals collection, then "find" everything,
   // but this time, sort it by name (1 means ascending order)
-  db.scrapeData.find().sort({ name: 1 }, function(error, found) {
+  db.Article.find().sort({ name: 1 }, function(error, found) {
     // Log any errors if the server encounters one
     if (error) {
       console.log(error);
