@@ -5,44 +5,38 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
 var path = require('path');
+var axios = require("axios");
 var mongoose = require('mongoose');
-var Exa = require("./model_js.js");
+var Article = require("./model_js.js");
 var PORT = process.env.PORT || 3000;
 
 // Database configuration
 var databaseUrl = "oddnews";
 var collections = ["Article"];
-var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
+var MONGODB = process.env.PROD_MONGODB || 'mongodb://root:root@ds259855.mlab.com:59855/oddnews'
 
-
-
-// Hook mongojs configuration to the db variable
- var db = mongojs(databaseUrl, collections);
-db.on("error", function(error) {
-  console.log("Database Error:", error);
-});
 
 
  mongoose.Promise = Promise;
 
- mongoose.connect(MONGODB_URI, {
-     useMongoClient: true, 
+ var db = mongoose.connect(MONGODB, {
+     useMongoClient: true,
+ }, function(){
+   console.log("Connected to", MONGODB);
  });
-
 
 app.use(express.static("./public"));
 
 // Main route (simple Hello World Message)
 app.get("/", function(req, res) {
    res.sendFile(path.join(__dirname, "./public/index.html"));
-  
 });
 
 // Retrieve data from the db
 app.get("/all", function(req, res) {
 
   // Find all results from the scrapedData collection in the db
-  db.Article.find({}, function(error, found) {
+  Article.find({}, function(error, found) {
     // Throw any errors to the console
     if (error) {
       console.log(error);
@@ -87,7 +81,7 @@ app.get("/scrape", function(req, res) {
       // If this found element had both a title and a link
       if (title && link) {
         // Insert the data in the scrapedData db
-        db.Article.insert({
+        Article.create({
           title: title,
           link: link
         },
